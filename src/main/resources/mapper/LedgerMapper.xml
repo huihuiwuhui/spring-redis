@@ -1,0 +1,568 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itcv.demo.sharding.dao.LedgerMapper" >
+  <resultMap id="BaseResultMap" type="com.itcv.demo.sharding.po.Ledger" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="drug_code" property="drugCode" jdbcType="VARCHAR" />
+    <result column="order_type" property="orderType" jdbcType="VARCHAR" />
+    <result column="order_code" property="orderCode" jdbcType="VARCHAR" />
+    <result column="seq_num" property="seqNum" jdbcType="INTEGER" />
+    <result column="order_date" property="orderDate" jdbcType="TIMESTAMP" />
+    <result column="intercourse_num" property="intercourseNum" jdbcType="VARCHAR" />
+    <result column="company_name" property="companyName" jdbcType="VARCHAR"/>
+    <result column="amount_in" property="amountIn" jdbcType="DECIMAL" />
+    <result column="price_in" property="priceIn" jdbcType="DECIMAL" />
+    <result column="sum_in" property="sumIn" jdbcType="DECIMAL" />
+    <result column="amount_out" property="amountOut" jdbcType="DECIMAL" />
+    <result column="sum_out" property="sumOut" jdbcType="DECIMAL" />
+    <result column="price_out" property="priceOut" jdbcType="DECIMAL" />
+    <result column="inventory_amount" property="inventoryAmount" jdbcType="DECIMAL" />
+    <result column="inventory_sum" property="inventorySum" jdbcType="DECIMAL" />
+    <result column="inventory_price" property="inventoryPrice" jdbcType="DECIMAL" />
+    <result column="post_date" property="postDate" jdbcType="TIMESTAMP" />
+    <result column="create_user" property="createUser" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="org_code" property="orgCode" jdbcType="VARCHAR" />
+    <result column="yn" property="yn" jdbcType="INTEGER" />
+    <result column="is_init" property="isInit" jdbcType="INTEGER" />
+    <result column="move_type" property="moveType" jdbcType="VARCHAR" />
+    <result column="drug_class" property="drugClass" jdbcType="VARCHAR" />
+    <result column="purchase_order" property="purchaseOrder" jdbcType="VARCHAR" />
+    <result column="sales_order" property="salesOrder" jdbcType="VARCHAR" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="tax_rate" property="taxRate" jdbcType="DECIMAL" />
+    <result column="original_drug_code" property="originalDrugCode" jdbcType="VARCHAR" />
+    <result column="tax_price_in" property="taxPriceIn" jdbcType="DECIMAL" />
+    <result column="tax_sum_in" property="taxSumIn" jdbcType="DECIMAL" />
+    <result column="tax_sum_out" property="taxSumOut" jdbcType="DECIMAL" />
+    <result column="tax_price_out" property="taxPriceOut" jdbcType="DECIMAL" />
+    <result column="tax_inventory_sum" property="taxInventorySum" jdbcType="DECIMAL" />
+    <result column="tax_inventory_price" property="taxInventoryPrice" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, drug_code, order_type, order_code, seq_num, order_date, intercourse_num,company_name, amount_in,
+    price_in, sum_in, amount_out, sum_out, price_out, inventory_amount, inventory_sum, 
+    inventory_price, post_date, create_user, create_time, org_code, yn, is_init, move_type, 
+    drug_class, purchase_order, sales_order, remarks, tax_rate, original_drug_code, tax_price_in, 
+    tax_sum_in, tax_sum_out, tax_price_out, tax_inventory_sum, tax_inventory_price
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from finance_ledger
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from finance_ledger
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.itcv.demo.sharding.po.Ledger" >
+    insert into finance_ledger (id, drug_code, order_type, 
+      order_code, seq_num, order_date, 
+      intercourse_num, amount_in, price_in, 
+      sum_in, amount_out, sum_out, 
+      price_out, inventory_amount, inventory_sum, 
+      inventory_price, post_date, create_user, 
+      create_time, org_code, yn, 
+      is_init, move_type, drug_class, 
+      purchase_order, sales_order, remarks, 
+      tax_rate, original_drug_code, tax_price_in, 
+      tax_sum_in, tax_sum_out, tax_price_out, 
+      tax_inventory_sum, tax_inventory_price)
+    values (#{id,jdbcType=INTEGER}, #{drugCode,jdbcType=VARCHAR}, #{orderType,jdbcType=VARCHAR}, 
+      #{orderCode,jdbcType=VARCHAR}, #{seqNum,jdbcType=INTEGER}, #{orderDate,jdbcType=TIMESTAMP}, 
+      #{intercourseNum,jdbcType=VARCHAR}, #{amountIn,jdbcType=DECIMAL}, #{priceIn,jdbcType=DECIMAL}, 
+      #{sumIn,jdbcType=DECIMAL}, #{amountOut,jdbcType=DECIMAL}, #{sumOut,jdbcType=DECIMAL}, 
+      #{priceOut,jdbcType=DECIMAL}, #{inventoryAmount,jdbcType=DECIMAL}, #{inventorySum,jdbcType=DECIMAL}, 
+      #{inventoryPrice,jdbcType=DECIMAL}, #{postDate,jdbcType=TIMESTAMP}, #{createUser,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{orgCode,jdbcType=VARCHAR}, #{yn,jdbcType=INTEGER}, 
+      #{isInit,jdbcType=INTEGER}, #{moveType,jdbcType=VARCHAR}, #{drugClass,jdbcType=VARCHAR}, 
+      #{purchaseOrder,jdbcType=VARCHAR}, #{salesOrder,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}, 
+      #{taxRate,jdbcType=DECIMAL}, #{originalDrugCode,jdbcType=VARCHAR}, #{taxPriceIn,jdbcType=DECIMAL}, 
+      #{taxSumIn,jdbcType=DECIMAL}, #{taxSumOut,jdbcType=DECIMAL}, #{taxPriceOut,jdbcType=DECIMAL}, 
+      #{taxInventorySum,jdbcType=DECIMAL}, #{taxInventoryPrice,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.itcv.demo.sharding.po.Ledger" >
+    insert into finance_ledger
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+
+      <if test="drugCode != null" >
+        drug_code,
+      </if>
+      <if test="orderType != null" >
+        order_type,
+      </if>
+      <if test="orderCode != null" >
+        order_code,
+      </if>
+      <if test="seqNum != null" >
+        seq_num,
+      </if>
+      <if test="orderDate != null" >
+        order_date,
+      </if>
+      <if test="intercourseNum != null" >
+        intercourse_num,
+      </if>
+      <if test="amountIn != null" >
+        amount_in,
+      </if>
+      <if test="priceIn != null" >
+        price_in,
+      </if>
+      <if test="sumIn != null" >
+        sum_in,
+      </if>
+      <if test="amountOut != null" >
+        amount_out,
+      </if>
+      <if test="sumOut != null" >
+        sum_out,
+      </if>
+      <if test="priceOut != null" >
+        price_out,
+      </if>
+      <if test="inventoryAmount != null" >
+        inventory_amount,
+      </if>
+      <if test="inventorySum != null" >
+        inventory_sum,
+      </if>
+      <if test="inventoryPrice != null" >
+        inventory_price,
+      </if>
+      <if test="postDate != null" >
+        post_date,
+      </if>
+      <if test="createUser != null" >
+        create_user,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="orgCode != null" >
+        org_code,
+      </if>
+      <if test="yn != null" >
+        yn,
+      </if>
+      <if test="isInit != null" >
+        is_init,
+      </if>
+      <if test="moveType != null" >
+        move_type,
+      </if>
+      <if test="drugClass != null" >
+        drug_class,
+      </if>
+      <if test="purchaseOrder != null" >
+        purchase_order,
+      </if>
+      <if test="salesOrder != null" >
+        sales_order,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+      <if test="taxRate != null" >
+        tax_rate,
+      </if>
+      <if test="originalDrugCode != null" >
+        original_drug_code,
+      </if>
+      <if test="taxPriceIn != null" >
+        tax_price_in,
+      </if>
+      <if test="taxSumIn != null" >
+        tax_sum_in,
+      </if>
+      <if test="taxSumOut != null" >
+        tax_sum_out,
+      </if>
+      <if test="taxPriceOut != null" >
+        tax_price_out,
+      </if>
+      <if test="taxInventorySum != null" >
+        tax_inventory_sum,
+      </if>
+      <if test="taxInventoryPrice != null" >
+        tax_inventory_price,
+      </if>
+      <if test="companyName != null" >
+        company_name,
+      </if>
+
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+
+      <if test="drugCode != null" >
+        #{drugCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orderType != null" >
+        #{orderType,jdbcType=VARCHAR},
+      </if>
+      <if test="orderCode != null" >
+        #{orderCode,jdbcType=VARCHAR},
+      </if>
+      <if test="seqNum != null" >
+        #{seqNum,jdbcType=INTEGER},
+      </if>
+      <if test="orderDate != null" >
+        #{orderDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="intercourseNum != null" >
+        #{intercourseNum,jdbcType=VARCHAR},
+      </if>
+      <if test="amountIn != null" >
+        #{amountIn,jdbcType=DECIMAL},
+      </if>
+      <if test="priceIn != null" >
+        #{priceIn,jdbcType=DECIMAL},
+      </if>
+      <if test="sumIn != null" >
+        #{sumIn,jdbcType=DECIMAL},
+      </if>
+      <if test="amountOut != null" >
+        #{amountOut,jdbcType=DECIMAL},
+      </if>
+      <if test="sumOut != null" >
+        #{sumOut,jdbcType=DECIMAL},
+      </if>
+      <if test="priceOut != null" >
+        #{priceOut,jdbcType=DECIMAL},
+      </if>
+      <if test="inventoryAmount != null" >
+        #{inventoryAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="inventorySum != null" >
+        #{inventorySum,jdbcType=DECIMAL},
+      </if>
+      <if test="inventoryPrice != null" >
+        #{inventoryPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="postDate != null" >
+        #{postDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null" >
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orgCode != null" >
+        #{orgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="yn != null" >
+        #{yn,jdbcType=INTEGER},
+      </if>
+      <if test="isInit != null" >
+        #{isInit,jdbcType=INTEGER},
+      </if>
+      <if test="moveType != null" >
+        #{moveType,jdbcType=VARCHAR},
+      </if>
+      <if test="drugClass != null" >
+        #{drugClass,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseOrder != null" >
+        #{purchaseOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="salesOrder != null" >
+        #{salesOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="taxRate != null" >
+        #{taxRate,jdbcType=DECIMAL},
+      </if>
+      <if test="originalDrugCode != null" >
+        #{originalDrugCode,jdbcType=VARCHAR},
+      </if>
+      <if test="taxPriceIn != null" >
+        #{taxPriceIn,jdbcType=DECIMAL},
+      </if>
+      <if test="taxSumIn != null" >
+        #{taxSumIn,jdbcType=DECIMAL},
+      </if>
+      <if test="taxSumOut != null" >
+        #{taxSumOut,jdbcType=DECIMAL},
+      </if>
+      <if test="taxPriceOut != null" >
+        #{taxPriceOut,jdbcType=DECIMAL},
+      </if>
+      <if test="taxInventorySum != null" >
+        #{taxInventorySum,jdbcType=DECIMAL},
+      </if>
+      <if test="taxInventoryPrice != null" >
+        #{taxInventoryPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.itcv.demo.sharding.po.Ledger" >
+    update finance_ledger
+    <set >
+      <if test="drugCode != null" >
+        drug_code = #{drugCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orderType != null" >
+        order_type = #{orderType,jdbcType=VARCHAR},
+      </if>
+      <if test="orderCode != null" >
+        order_code = #{orderCode,jdbcType=VARCHAR},
+      </if>
+      <if test="seqNum != null" >
+        seq_num = #{seqNum,jdbcType=INTEGER},
+      </if>
+      <if test="orderDate != null" >
+        order_date = #{orderDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="intercourseNum != null" >
+        intercourse_num = #{intercourseNum,jdbcType=VARCHAR},
+      </if>
+      <if test="amountIn != null" >
+        amount_in = #{amountIn,jdbcType=DECIMAL},
+      </if>
+      <if test="priceIn != null" >
+        price_in = #{priceIn,jdbcType=DECIMAL},
+      </if>
+      <if test="sumIn != null" >
+        sum_in = #{sumIn,jdbcType=DECIMAL},
+      </if>
+      <if test="amountOut != null" >
+        amount_out = #{amountOut,jdbcType=DECIMAL},
+      </if>
+      <if test="sumOut != null" >
+        sum_out = #{sumOut,jdbcType=DECIMAL},
+      </if>
+      <if test="priceOut != null" >
+        price_out = #{priceOut,jdbcType=DECIMAL},
+      </if>
+      <if test="inventoryAmount != null" >
+        inventory_amount = #{inventoryAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="inventorySum != null" >
+        inventory_sum = #{inventorySum,jdbcType=DECIMAL},
+      </if>
+      <if test="inventoryPrice != null" >
+        inventory_price = #{inventoryPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="postDate != null" >
+        post_date = #{postDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null" >
+        create_user = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orgCode != null" >
+        org_code = #{orgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="yn != null" >
+        yn = #{yn,jdbcType=INTEGER},
+      </if>
+      <if test="isInit != null" >
+        is_init = #{isInit,jdbcType=INTEGER},
+      </if>
+      <if test="moveType != null" >
+        move_type = #{moveType,jdbcType=VARCHAR},
+      </if>
+      <if test="drugClass != null" >
+        drug_class = #{drugClass,jdbcType=VARCHAR},
+      </if>
+      <if test="purchaseOrder != null" >
+        purchase_order = #{purchaseOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="salesOrder != null" >
+        sales_order = #{salesOrder,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="taxRate != null" >
+        tax_rate = #{taxRate,jdbcType=DECIMAL},
+      </if>
+      <if test="originalDrugCode != null" >
+        original_drug_code = #{originalDrugCode,jdbcType=VARCHAR},
+      </if>
+      <if test="taxPriceIn != null" >
+        tax_price_in = #{taxPriceIn,jdbcType=DECIMAL},
+      </if>
+      <if test="taxSumIn != null" >
+        tax_sum_in = #{taxSumIn,jdbcType=DECIMAL},
+      </if>
+      <if test="taxSumOut != null" >
+        tax_sum_out = #{taxSumOut,jdbcType=DECIMAL},
+      </if>
+      <if test="taxPriceOut != null" >
+        tax_price_out = #{taxPriceOut,jdbcType=DECIMAL},
+      </if>
+      <if test="taxInventorySum != null" >
+        tax_inventory_sum = #{taxInventorySum,jdbcType=DECIMAL},
+      </if>
+      <if test="taxInventoryPrice != null" >
+        tax_inventory_price = #{taxInventoryPrice,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.itcv.demo.sharding.po.Ledger" >
+    update finance_ledger
+    set drug_code = #{drugCode,jdbcType=VARCHAR},
+      order_type = #{orderType,jdbcType=VARCHAR},
+      order_code = #{orderCode,jdbcType=VARCHAR},
+      seq_num = #{seqNum,jdbcType=INTEGER},
+      order_date = #{orderDate,jdbcType=TIMESTAMP},
+      intercourse_num = #{intercourseNum,jdbcType=VARCHAR},
+      amount_in = #{amountIn,jdbcType=DECIMAL},
+      price_in = #{priceIn,jdbcType=DECIMAL},
+      sum_in = #{sumIn,jdbcType=DECIMAL},
+      amount_out = #{amountOut,jdbcType=DECIMAL},
+      sum_out = #{sumOut,jdbcType=DECIMAL},
+      price_out = #{priceOut,jdbcType=DECIMAL},
+      inventory_amount = #{inventoryAmount,jdbcType=DECIMAL},
+      inventory_sum = #{inventorySum,jdbcType=DECIMAL},
+      inventory_price = #{inventoryPrice,jdbcType=DECIMAL},
+      post_date = #{postDate,jdbcType=TIMESTAMP},
+      create_user = #{createUser,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      org_code = #{orgCode,jdbcType=VARCHAR},
+      yn = #{yn,jdbcType=INTEGER},
+      is_init = #{isInit,jdbcType=INTEGER},
+      move_type = #{moveType,jdbcType=VARCHAR},
+      drug_class = #{drugClass,jdbcType=VARCHAR},
+      purchase_order = #{purchaseOrder,jdbcType=VARCHAR},
+      sales_order = #{salesOrder,jdbcType=VARCHAR},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      tax_rate = #{taxRate,jdbcType=DECIMAL},
+      original_drug_code = #{originalDrugCode,jdbcType=VARCHAR},
+      tax_price_in = #{taxPriceIn,jdbcType=DECIMAL},
+      tax_sum_in = #{taxSumIn,jdbcType=DECIMAL},
+      tax_sum_out = #{taxSumOut,jdbcType=DECIMAL},
+      tax_price_out = #{taxPriceOut,jdbcType=DECIMAL},
+      tax_inventory_sum = #{taxInventorySum,jdbcType=DECIMAL},
+      tax_inventory_price = #{taxInventoryPrice,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+
+
+  <sql id="Ledger_Param">
+    <where>
+      yn = 1
+      and org_code = #{orgCode}
+
+      <if test="drugCode != null and drugCode != ''">
+        and drug_code = #{drugCode}
+      </if>
+      <if test="moveType != null and moveType != ''">
+        and move_type = #{moveType}
+      </if>
+      <if test="orderCode != null and orderCode != ''">
+        and order_code = #{orderCode}
+      </if>
+      <if test="seqNum != null and seqNum > 0">
+        and seq_num = #{seqNum}
+      </if>
+      <if test="purchaseOrder != null and purchaseOrder != ''">
+        and purchase_order = #{purchaseOrder}
+      </if>
+      <if test="salesOrder != null and salesOrder != ''">
+        and sales_order = #{salesOrder}
+      </if>
+      <if test="moveTypeList != null and moveTypeList.size() > 0">
+        and move_type in
+        <foreach collection="moveTypeList" index="index" item="item" open="(" separator="," close=")">
+          #{item}
+        </foreach>
+      </if>
+
+    </where>
+  </sql>
+
+
+
+  <insert id="batchInsertLedger" parameterType="java.util.List">
+    insert into finance_ledger (drug_code, order_type,
+        order_code, seq_num, order_date,
+        intercourse_num, amount_in, price_in,
+        sum_in, amount_out, sum_out,
+        price_out, inventory_amount, inventory_sum,
+        inventory_price, post_date, create_user,
+        create_time, org_code, yn,
+        is_init, move_type, drug_class,
+        purchase_order, sales_order, remarks,
+        tax_rate, original_drug_code, tax_price_in,
+        tax_sum_in, tax_sum_out, tax_price_out,
+        tax_inventory_sum, tax_inventory_price)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (
+      #{item.drugCode,jdbcType=VARCHAR}, #{item.orderType,jdbcType=VARCHAR},
+      #{item.orderCode,jdbcType=VARCHAR}, #{item.seqNum,jdbcType=INTEGER}, #{item.orderDate,jdbcType=TIMESTAMP},
+      #{item.intercourseNum,jdbcType=VARCHAR}, #{item.amountIn,jdbcType=DECIMAL}, #{item.priceIn,jdbcType=DECIMAL},
+      #{item.sumIn,jdbcType=DECIMAL}, #{item.amountOut,jdbcType=DECIMAL}, #{item.sumOut,jdbcType=DECIMAL},
+      #{item.priceOut,jdbcType=DECIMAL}, #{item.inventoryAmount,jdbcType=DECIMAL}, #{item.inventorySum,jdbcType=DECIMAL},
+      #{item.inventoryPrice,jdbcType=DECIMAL}, #{item.postDate,jdbcType=TIMESTAMP}, #{item.createUser,jdbcType=VARCHAR},
+      #{item.createTime,jdbcType=TIMESTAMP}, #{item.orgCode,jdbcType=VARCHAR}, #{item.yn,jdbcType=INTEGER},
+      #{item.isInit,jdbcType=INTEGER}, #{item.moveType,jdbcType=VARCHAR}, #{item.drugClass,jdbcType=VARCHAR},
+      #{item.purchaseOrder,jdbcType=VARCHAR}, #{item.salesOrder,jdbcType=VARCHAR}, #{item.remarks,jdbcType=VARCHAR},
+      #{item.taxRate,jdbcType=DECIMAL}, #{item.originalDrugCode,jdbcType=VARCHAR}, #{item.taxPriceIn,jdbcType=DECIMAL},
+      #{item.taxSumIn,jdbcType=DECIMAL}, #{item.taxSumOut,jdbcType=DECIMAL}, #{item.taxPriceOut,jdbcType=DECIMAL},
+      #{item.taxInventorySum,jdbcType=DECIMAL}, #{item.taxInventoryPrice,jdbcType=DECIMAL}
+      )
+    </foreach>
+  </insert>
+
+  <delete id="deleteLedgerInit">
+    delete from finance_ledger
+    where org_code = #{orgCode,jdbcType=VARCHAR}
+    and is_init = 1
+  </delete>
+
+  <select id="selectLedgerLast" resultMap="BaseResultMap" parameterType="com.itcv.demo.sharding.po.Ledger"  >
+    select
+    <include refid="Base_Column_List" />
+     from (select max(id) maxid,org_code Org from finance_ledger
+      where org_code=#{orgCode}
+      and drug_code in
+      <foreach collection="drugCodes" index="index" item="item" open="(" separator="," close=")">
+          #{item}
+      </foreach>
+      GROUP BY drug_code) t
+      LEFT JOIN
+      finance_ledger l on t.maxid = l.id
+      where l.org_code =#{orgCode}
+  </select>
+
+
+  <select id="selectMaxId" resultType="java.util.Map">
+    select max(id) maxid,drug_code  from finance_ledger
+    where org_code=#{orgCode}
+    and drug_code in
+    <foreach collection="drugCodes" index="index" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+    GROUP BY drug_code
+  </select>
+
+  <select id="selectLedgerLastById" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from
+    finance_ledger   where org_code=#{orgCode}
+    and id in
+    <foreach collection="idList" index="index" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </select>
+
+
+
+
+
+</mapper>
