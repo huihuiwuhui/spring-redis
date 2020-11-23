@@ -4,12 +4,16 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class User implements Serializable  {
+    private static final byte [] tempByte = new byte [1024 * 1024];
     private Long id;
     private String guid;
     private String name;
     private String age;
     private Date createTime;
 
+    public User(){
+        System.out.println("初始化User了");
+    }
     public Long getId() {
         return id;
     }
