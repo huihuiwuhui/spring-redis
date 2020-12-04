@@ -1,3 +1,4 @@
+/*
 package com.itcv.demo.job.config;
 
 
@@ -24,14 +25,16 @@ import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 import java.util.Map;
 
+*/
 /**
  * 小药药自定义任务调度配置 核心在于：使用自定义的分片策略类strategyClass --> "XyyJobScheduleStrategy"
  * 
  * @author wulinli
  * @date 2018/08/16
- */
+ *//*
+
 @Configuration
-@ConditionalOnExpression("'${elaticjob.zookeeper.server-lists}'.length() > 0")
+//@ConditionalOnExpression("'${elaticjob.zookeeper.server-lists}'.length() > 0")
 public class AutoConfig {
 
 	private final static Logger logger = LoggerFactory.getLogger(AutoConfig.class);
@@ -94,3 +97,4 @@ public class AutoConfig {
 		}
 	}
 }
+*/

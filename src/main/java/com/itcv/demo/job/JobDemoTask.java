@@ -1,3 +1,4 @@
+/*
 package com.itcv.demo.job;
 
 import com.dangdang.ddframe.job.api.ShardingContext;
@@ -42,3 +43,4 @@ public class JobDemoTask implements SimpleJob {
         fixedThreadPool.shutdown();
     }
 }
+*/
