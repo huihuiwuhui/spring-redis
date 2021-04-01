@@ -12,7 +12,7 @@
     </parent>
 
     <groupId>com.itcv.redis</groupId>
-    <artifactId>redis-demo</artifactId>
+    <artifactId>spring-redis</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
