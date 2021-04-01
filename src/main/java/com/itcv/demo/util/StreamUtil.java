@@ -9,6 +9,8 @@ import java.lang.management.ManagementFactory;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,10 +21,21 @@ import java.util.stream.Collectors;
  * @create: 2020-06-24 09:58
  */
 public class StreamUtil {
+
+
     public static void main(String[] args) {
+
+        String endDate ="2021-01-31";
+        Date date = DateUtil.strToDate(endDate);
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.DATE,1);
+        String endDateStr = DateUtil.parseDateToStr(calendar.getTime(),DateUtil.DATE_FORMAT_YYYY_MM_DD);
+System.out.println(endDateStr);
         URL url = null;
         List<ClassLoader> classLoaderList = new ArrayList<ClassLoader>();
-        try {
+      /*  try {
             //获取有关类型加载的JMX接口
             ClassLoadingMXBean loadingBean = ManagementFactory.getClassLoadingMXBean();
             url = new File("E:/data/logs").toURI().toURL();
@@ -41,6 +54,8 @@ public class StreamUtil {
             }
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
     }
+
+
 }
