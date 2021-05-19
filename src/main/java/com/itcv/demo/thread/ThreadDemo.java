@@ -16,8 +16,8 @@ public class ThreadDemo implements Runnable {
     public void run() {
         try {
             System.out.println(Thread.currentThread().getName()+"正在执行。。。。。");
-            System.out.println(num);
-          //  Thread.sleep(1000);
+            // System.out.println(num);
+           Thread.sleep(1000);
         } catch (Exception e) {
             e.printStackTrace();
         }

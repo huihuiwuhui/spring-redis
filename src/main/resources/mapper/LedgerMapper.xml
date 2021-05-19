@@ -56,32 +56,7 @@
     delete from finance_ledger
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.itcv.demo.sharding.po.Ledger" >
-    insert into finance_ledger (id, drug_code, order_type, 
-      order_code, seq_num, order_date, 
-      intercourse_num, amount_in, price_in, 
-      sum_in, amount_out, sum_out, 
-      price_out, inventory_amount, inventory_sum, 
-      inventory_price, post_date, create_user, 
-      create_time, org_code, yn, 
-      is_init, move_type, drug_class, 
-      purchase_order, sales_order, remarks, 
-      tax_rate, original_drug_code, tax_price_in, 
-      tax_sum_in, tax_sum_out, tax_price_out, 
-      tax_inventory_sum, tax_inventory_price)
-    values (#{id,jdbcType=INTEGER}, #{drugCode,jdbcType=VARCHAR}, #{orderType,jdbcType=VARCHAR}, 
-      #{orderCode,jdbcType=VARCHAR}, #{seqNum,jdbcType=INTEGER}, #{orderDate,jdbcType=TIMESTAMP}, 
-      #{intercourseNum,jdbcType=VARCHAR}, #{amountIn,jdbcType=DECIMAL}, #{priceIn,jdbcType=DECIMAL}, 
-      #{sumIn,jdbcType=DECIMAL}, #{amountOut,jdbcType=DECIMAL}, #{sumOut,jdbcType=DECIMAL}, 
-      #{priceOut,jdbcType=DECIMAL}, #{inventoryAmount,jdbcType=DECIMAL}, #{inventorySum,jdbcType=DECIMAL}, 
-      #{inventoryPrice,jdbcType=DECIMAL}, #{postDate,jdbcType=TIMESTAMP}, #{createUser,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{orgCode,jdbcType=VARCHAR}, #{yn,jdbcType=INTEGER}, 
-      #{isInit,jdbcType=INTEGER}, #{moveType,jdbcType=VARCHAR}, #{drugClass,jdbcType=VARCHAR}, 
-      #{purchaseOrder,jdbcType=VARCHAR}, #{salesOrder,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}, 
-      #{taxRate,jdbcType=DECIMAL}, #{originalDrugCode,jdbcType=VARCHAR}, #{taxPriceIn,jdbcType=DECIMAL}, 
-      #{taxSumIn,jdbcType=DECIMAL}, #{taxSumOut,jdbcType=DECIMAL}, #{taxPriceOut,jdbcType=DECIMAL}, 
-      #{taxInventorySum,jdbcType=DECIMAL}, #{taxInventoryPrice,jdbcType=DECIMAL})
-  </insert>
+
   <insert id="insertSelective" parameterType="com.itcv.demo.sharding.po.Ledger" >
     insert into finance_ledger
     <trim prefix="(" suffix=")" suffixOverrides="," >

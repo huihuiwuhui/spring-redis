@@ -1,5 +1,7 @@
 package com.itcv.demo.redis.client;
 
+import io.lettuce.core.RedisClient;
+
 import java.io.IOException;
 import java.net.Socket;
 
@@ -10,6 +12,7 @@ public class TSocketClient {
 
     public TSocketClient() {
         try {
+            RedisClient redisClient ;
             socket = new Socket("localhost", 6379);
         } catch (IOException e) {
             e.printStackTrace();
